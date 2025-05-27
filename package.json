@@ -9,14 +9,41 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/charts": "^8.0.2",
+    "@mantine/code-highlight": "^8.0.2",
+    "@mantine/core": "^8.0.2",
+    "@mantine/dates": "^8.0.2",
+    "@mantine/form": "^8.0.2",
+    "@mantine/hooks": "^8.0.2",
+    "@mantine/modals": "^8.0.2",
+    "@mantine/notifications": "^8.0.2",
+    "@mantine/nprogress": "^8.0.2",
+    "@mantine/spotlight": "^8.0.2",
+    "@mantine/tiptap": "^8.0.2",
+    "@tabler/icons-react": "^3.33.0",
+    "@tiptap/extension-link": "^2.12.0",
+    "@tiptap/pm": "^2.12.0",
+    "@tiptap/react": "^2.12.0",
+    "@tiptap/starter-kit": "^2.12.0",
+    "dayjs": "^1.11.13",
+    "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.2"
+    "recharts": "^2.15.3"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/js": "^9.27.0",
     "@types/node": "^20",
     "@types/react": "^19",
-    "@types/react-dom": "^19"
+    "@types/react-dom": "^19",
+    "eslint": "^9.27.0",
+    "eslint-config-mantine": "^4.0.3",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "postcss": "^8.5.3",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "typescript": "^5",
+    "typescript-eslint": "^8.32.1"
   }
 }
