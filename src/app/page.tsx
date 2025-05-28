@@ -1,11 +1,6 @@
 
-import DashboardLayout from "@/components/layout/DashboardLayout";
-import { Button } from "@mantine/core";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <DashboardLayout>
-      <Button>Hello world</Button>
-    </DashboardLayout>
-  );
+  return redirect("/dashboard");
 }

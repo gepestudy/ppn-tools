@@ -1,12 +1,8 @@
-import DashboardLayout from '@/components/layout/DashboardLayout'
-import { createClient } from '@/utils/supabase/server'
-import React from 'react'
+import Layout from '@/components/layout/Layout';
 
 const page = async () => {
-  const { auth } = await createClient()
-  const user = await auth.getUser()
   return (
-    <DashboardLayout>welcome {user.data.user?.user_metadata.full_name}</DashboardLayout>
+    <Layout>welcome </Layout>
   )
 }
 

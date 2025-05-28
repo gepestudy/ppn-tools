@@ -1,12 +1,13 @@
 "use client"
+import { IUser } from '@/db/types/user.type';
 import { AppShell, Box, Burger, Group, Image, ScrollArea, Skeleton } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 import ColorScheme from './ColorScheme';
-import Link from 'next/link';
 import UserButton from './UserButton';
 
-export default function DashboardLayout({ children }: Readonly<PropsWithChildren>) {
+export default function DashboardLayout({ children, user }: Readonly<{ children: PropsWithChildren<any>, user: IUser | null }>) {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
@@ -46,7 +47,7 @@ export default function DashboardLayout({ children }: Readonly<PropsWithChildren
               <Skeleton key={index} h={28} mt="sm" animate={false} />
             ))}
         </AppShell.Section>
-        <AppShell.Section><UserButton /></AppShell.Section>
+        <AppShell.Section><UserButton user={user} /></AppShell.Section>
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>
