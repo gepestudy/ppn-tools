@@ -1,11 +1,13 @@
 
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from "@mantine/core";
 import type { Metadata } from "next";
+import { Notifications } from '@mantine/notifications';
 
 import "@mantine/core/styles.css";
+import '@mantine/notifications/styles.css';
 import "./globals.css";
-import { theme } from "./theme";
 
+import { theme } from "./theme";
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -42,7 +44,10 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider theme={theme} defaultColorScheme="light">{children}</MantineProvider>
+        <MantineProvider theme={theme} defaultColorScheme="light">
+          <Notifications />
+          {children}
+        </MantineProvider>
       </body>
     </html>
   );

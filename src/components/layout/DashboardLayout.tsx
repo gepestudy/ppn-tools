@@ -20,7 +20,7 @@ export default function DashboardLayout({ children }: Readonly<PropsWithChildren
       }}
       padding="md"
     >
-      <AppShell.Header style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }} px={"md"}>
+      <AppShell.Header style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }} px="md">
         <Group h="100%">
           <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
           <Burger opened={desktopOpened} onClick={toggleDesktop} visibleFrom="sm" size="sm" />
