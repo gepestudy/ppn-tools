@@ -1,7 +1,11 @@
+import Layout from "@/components/layout/Layout"
+import { Button } from "@/components/ui/button"
 
 const page = async () => {
   return (
-    <p>Welcome</p>
+    <Layout>
+      <Button>Hello world!</Button>
+    </Layout>
   )
 }
 

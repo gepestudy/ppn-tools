@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-
+import { Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Purwantara Tools",
   description: "made with ❤️ by gepe",
+  icons: {
+    icon: "/favicon.ico",
+  },
   authors: [
     {
       name: "gepe",
@@ -36,8 +36,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
       </head>
-      <body>
+      <body className={`${plusJakartaSans.variable} antialiased`}>
         {children}
+        <Toaster />
       </body>
     </html>
   );
