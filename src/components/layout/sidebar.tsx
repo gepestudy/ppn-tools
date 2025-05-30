@@ -188,13 +188,13 @@ export function SessionNavBar({ user }: Readonly<{ user: IUser }>) {
               </div>
               <div className="flex flex-col p-2">
                 <Link
-                  href="/settings/integrations"
+                  href="/settings/users"
                   className="mt-auto flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5   transition hover:bg-muted hover:text-primary"
                 >
                   <Settings className="h-4 w-4 shrink-0" />{" "}
                   <motion.li variants={variants}>
                     {!isCollapsed && (
-                      <p className="ml-2 text-sm font-medium"> Settings</p>
+                      <p className="ml-2 text-sm font-medium">Settings</p>
                     )}
                   </motion.li>
                 </Link>
@@ -244,7 +244,7 @@ export function SessionNavBar({ user }: Readonly<{ user: IUser }>) {
                         className="flex items-center gap-2"
                       >
                         <Link href="/settings/profile">
-                          <UserCircle className="h-4 w-4" /> Profile
+                          <Settings className="h-4 w-4" />Settings
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem

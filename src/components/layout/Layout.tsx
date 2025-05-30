@@ -1,9 +1,13 @@
 import { getUser } from '@/actions/users/getUser'
 import { redirect } from 'next/navigation'
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, ReactNode } from 'react'
 import { SessionNavBar } from './sidebar'
+import { cn } from '@/lib/utils'
 
-const Layout = async ({ children }: PropsWithChildren) => {
+const Layout = async ({ children, className }: {
+  children: ReactNode;
+  className?: string;
+}) => {
   const user = await getUser()
   if (!user) {
     return redirect('/auth/signin')
@@ -15,7 +19,7 @@ const Layout = async ({ children }: PropsWithChildren) => {
         <div className='h-[54px] border-b p-4 flex items-center'>
           {/* Header content */}
         </div>
-        <div className='container mx-auto realtive'>
+        <div className={cn('container mx-auto relative px-2 py-5', className)}>
           {children}
         </div>
       </div>
