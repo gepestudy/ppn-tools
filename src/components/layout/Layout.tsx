@@ -1,8 +1,8 @@
 import { getUser } from '@/actions/users/getUser'
-import { redirect } from 'next/navigation'
-import React, { PropsWithChildren, ReactNode } from 'react'
-import { SessionNavBar } from './sidebar'
 import { cn } from '@/lib/utils'
+import { redirect } from 'next/navigation'
+import { ReactNode } from 'react'
+import { SessionNavBar } from './sidebar'
 
 const Layout = async ({ children, className }: {
   children: ReactNode;

@@ -8,6 +8,13 @@
       "when": 1748416119144,
       "tag": "0000_create_user_table",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1748705202301,
+      "tag": "0001_create_va_transaction_table",
+      "breakpoints": true
     }
   ]
 }

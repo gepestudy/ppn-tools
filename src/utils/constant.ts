@@ -1,0 +1,1 @@
+export const URL_CREATE_VA = "https://api.purwantara.id/v1/virtual-account"

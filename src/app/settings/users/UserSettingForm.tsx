@@ -3,12 +3,13 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import SubmitButton from '@/components/ui/submitButton'
-import { IUser } from '@/db/types/user.type'
 import { useActionState, useEffect } from 'react'
 import { updateUserSettings } from './actions'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 import PasswordInput from '@/components/ui/passwordInput'
+import { Tooltip } from '@/components/ui/tooltip'
+import { IUser } from '@/db/schema'
 
 const UserSettingForm = ({ user }: { user: IUser }) => {
   const [actionState, formAction] = useActionState(updateUserSettings, undefined)
@@ -91,7 +92,7 @@ const UserSettingForm = ({ user }: { user: IUser }) => {
                 placeholder="gepe@company.com"
                 className="mt-2"
                 defaultValue={actionState?.data?.email ?? user.email ?? undefined}
-                disabled
+                readOnly
               />
             </div>
             <div className="col-span-full">
@@ -130,7 +131,7 @@ const UserSettingForm = ({ user }: { user: IUser }) => {
                     id="role"
                     name="hidup-jokowi"
                     placeholder="Senior Manager"
-                    disabled
+                    readOnly
                     className="mt-2"
                     defaultValue={user.role ?? undefined}
                   />

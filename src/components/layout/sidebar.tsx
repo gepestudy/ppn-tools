@@ -10,20 +10,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { IUser } from "@/db/types/user.type";
 import { cn } from "@/lib/utils";
 import { createClient } from "@/utils/supabase/client";
 import { motion } from "framer-motion";
 import {
   ChevronsUpDown,
   CreditCard,
-  FileText,
-  GraduationCap,
   LayoutDashboard,
   LogOut,
   QrCode,
   Settings,
-  UserCircle,
   Wallet
 } from "lucide-react";
 import Image from "next/image";
@@ -31,6 +27,7 @@ import Link from "next/link";
 import { redirect, usePathname } from "next/navigation";
 import { useState } from "react";
 import { SidebarItem } from "./sidebarItem";
+import { IUser } from "@/db/schema";
 
 const sidebarVariants = {
   open: {
@@ -156,7 +153,7 @@ export function SessionNavBar({ user }: Readonly<{ user: IUser }>) {
                     </Avatar>
                   ) : (
                     <div className="w-full flex justify-between items-center">
-                      <Image src="/images/logo.png" width="100" height="100" alt="Logo" />
+                      <Image priority src="/images/logo.png" width="100" height="100" alt="Logo" />
                       <Badge
                         className={cn(
                           "flex h-fit w-fit items-center gap-1.5 rounded border-none bg-blue-50 px-1.5 text-blue-600 dark:bg-blue-700 dark:text-blue-300",
@@ -243,7 +240,7 @@ export function SessionNavBar({ user }: Readonly<{ user: IUser }>) {
                         asChild
                         className="flex items-center gap-2"
                       >
-                        <Link href="/settings/profile">
+                        <Link href="/settings/users">
                           <Settings className="h-4 w-4" />Settings
                         </Link>
                       </DropdownMenuItem>
