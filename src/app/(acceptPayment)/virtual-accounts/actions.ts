@@ -93,46 +93,48 @@ export async function createVirtualAccount(prevState: any, formData: FormData) {
           bank: channel,
           description: "testing payment app",
           expired_at: expiredAt,
-          external_id: `TPA-${epochInSeconds}`,
-          merchant_trx_id: `TPA-${epochInSeconds}`
+          external_id: `EXID-${epochInSeconds}`,
+          merchant_trx_id: `MTID-${epochInSeconds}`
         })
       })
       const json: ResponseCreateVA = await res.json()
 
-      if (!res.ok) {
-        results.push({
-          channel: channel as string,
-          success: false,
-          error: {
-            code: json.error?.code!,
-            message: json.error?.message!,
-            fields: json.error?.fields
-          }
-        })
-        continue
-      }
+
 
       try {
         await db.insert(VATransaction).values({
-          uuid: json.data!.uuid,
-          externalID: json.data!.external_id,
-          name: json.data!.name,
-          amount: parseInt(json.data!.amount),
-          fee: parseInt(json.data!.fee),
-          total: parseInt(json.data!.total),
-          feeChargedTo: json.data!.fee_charged_to,
-          vaNumber: json.data!.va_number,
-          description: json.data!.description,
-          expiredAt: DateTime.fromISO(json.data!.expired_at).toJSDate(),
-          paymentCode: json.data!.payment_code,
-          status: json.data!.status,
+          uuid: res.ok ? json.data!.uuid : `ERR-${crypto.randomUUID()}`,
+          externalID: res.ok ? json.data?.external_id : `EXID-${epochInSeconds}`,
+          name: res.ok ? json.data?.name : "ERROR",
+          amount: res.ok ? parseInt(json.data?.amount ?? "0") : data.expectedAmount,
+          fee: res.ok ? parseInt(json.data?.fee ?? "0") : 0,
+          total: res.ok ? parseInt(json.data?.total ?? "0") : data.expectedAmount,
+          feeChargedTo: res.ok ? json.data?.fee_charged_to : undefined,
+          vaNumber: res.ok ? json.data?.va_number : undefined,
+          description: res.ok ? json.data?.description : "Error from API",
+          expiredAt: res.ok && json.data?.expired_at ? DateTime.fromISO(json.data.expired_at).toJSDate() : undefined,
+          paymentCode: res.ok ? json.data?.payment_code : undefined,
+          status: res.ok ? json.data?.status : json.error?.code ?? "ERROR",
+          response: json,
         })
 
-        results.push({
-          channel: channel as string,
-          success: true,
-          data: json.data
-        })
+        if (res.ok) {
+          results.push({
+            channel: channel as string,
+            success: true,
+            data: json.data
+          })
+        } else {
+          results.push({
+            channel: channel as string,
+            success: false,
+            error: {
+              code: json.error?.code!,
+              message: json.error?.message!,
+              fields: json.error?.fields
+            }
+          })
+        }
       } catch (dbError) {
         results.push({
           channel: channel as string,

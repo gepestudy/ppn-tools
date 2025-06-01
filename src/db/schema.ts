@@ -1,5 +1,5 @@
 import { InferSelectModel } from "drizzle-orm";
-import { index, integer, pgTable, text, timestamp, unique } from "drizzle-orm/pg-core";
+import { index, integer, json, pgTable, text, timestamp, unique } from "drizzle-orm/pg-core";
 
 
 
@@ -34,7 +34,9 @@ export const VATransaction = pgTable("va_transaction", {
 	description: text("description"),
 	expiredAt: timestamp("expired_at", { withTimezone: true }),
 	paymentCode: text("payment_code"),
-	status: text("status")
+	status: text("status"),
+	response: json("response"),
+	createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 }, (table) => [
 	index("va_transaction_va_number_idx").using("btree", table.vaNumber.asc().nullsLast().op("text_ops")),
 	index("va_transaction_payment_code_idx").using("btree", table.paymentCode.asc().nullsLast().op("text_ops")),

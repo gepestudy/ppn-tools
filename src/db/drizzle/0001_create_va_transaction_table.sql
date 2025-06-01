@@ -10,7 +10,9 @@ CREATE TABLE "va_transaction" (
 	"description" text,
 	"expired_at" timestamp with time zone,
 	"payment_code" text,
-	"status" text
+	"status" text,
+	"response" json,
+	"created_at" timestamp with time zone DEFAULT now()
 );
 --> statement-breakpoint
 CREATE INDEX "va_transaction_va_number_idx" ON "va_transaction" USING btree ("va_number" text_ops);--> statement-breakpoint

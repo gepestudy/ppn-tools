@@ -1,5 +1,5 @@
 {
-  "id": "0b71a19a-4642-4044-b4fa-3a64cb69e0b0",
+  "id": "6ac33af8-687e-4e61-a948-788e550a74f8",
   "prevId": "34219540-d769-4ab6-93c9-ff8220701896",
   "version": "7",
   "dialect": "postgresql",
@@ -79,6 +79,19 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "response": {
+          "name": "response",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {
